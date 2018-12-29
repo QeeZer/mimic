@@ -5,4 +5,4 @@
 
 define('ROOT_DIR', strtr(dirname(dirname(__FILE__)), '\\', '/').'/');
 
-require ROOT_DIR . 'base.php';
+require ROOT_DIR . 'vendor/autoload.php';
