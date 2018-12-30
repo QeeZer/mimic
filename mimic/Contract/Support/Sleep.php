@@ -3,7 +3,7 @@
  * Mimic Sleep Contract
  */
 
-namespace Mimic\Contracts\Support;
+namespace Mimic\Contract\Support;
 
 interface Sleep
 {

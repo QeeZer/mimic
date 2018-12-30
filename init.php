@@ -3,4 +3,8 @@
  * 开始文件
  */
 
-return new StdClass();
+use Mimic\Brain;
+
+$mimic = new Brain;
+
+return $mimic;

@@ -12,7 +12,3 @@ require ROOT_DIR . 'vendor/autoload.php';
 
 /** mimic */
 $mimic = require ROOT_DIR . 'init.php';
-
-$mimic->a = 'A';
-
-echo $mimic->a;

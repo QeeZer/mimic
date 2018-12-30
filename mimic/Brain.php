@@ -7,7 +7,7 @@ namespace Mimic;
 
 use Closure;
 use Illuminate\Container\Container;
-use Mimic\Contracts\Brain as BrainContract;
+use Mimic\Contract\Brain as BrainContract;
 
 class Brain extends Container implements BrainContract
 {
@@ -20,6 +20,12 @@ class Brain extends Container implements BrainContract
 	public function __construct($bathPath = ROOT_DIR)
 	{
 		$this->bathPath = $bathPath;
+
+		static::setInstance($this);
+
+		$this->instance('main', $this);
+
+		$this->instance(Container::class, $this);
 	}
 
 	/**

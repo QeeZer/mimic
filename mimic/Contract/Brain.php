@@ -3,7 +3,7 @@
  * Mimic's Brain Contract
  */
 
-namespace Mimic\Contracts;
+namespace Mimic\Contract;
 
 use Illuminate\Contracts\Container\Container;
 

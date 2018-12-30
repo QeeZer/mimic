@@ -5,7 +5,7 @@
 
 namespace Mimic\Support;
 
-use Mimic\Contracts\Support\Sleep as SleepContract;
+use Mimic\Contract\Support\Sleep as SleepContract;
 
 class Sleep implements SleepContract
 {
