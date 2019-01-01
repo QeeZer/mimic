@@ -64,11 +64,11 @@ class Hook implements HookContract
 			qz_e('没有' . $hook . '钩子');
 		}
 
-		$this->hooks[$hook] = [[
+		$this->hooks[$hook][] = [
 			'action' => $action,
 			'parameters' => $parameters,
 			'callback' => $callback
-		]];
+		];
 	}
 
 	/**
