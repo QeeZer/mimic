@@ -12,10 +12,3 @@ require ROOT_DIR . 'vendor/autoload.php';
 
 /** mimic */
 $mimic = require ROOT_DIR . 'init.php';
-
-class Asb
-{
-	//
-}
-
-echo Asb::class;

@@ -21,11 +21,36 @@ class Brain extends Container implements BrainContract
 	{
 		$this->bathPath = $bathPath;
 
+		$this->registerSystem();
+
+		$this->registerCoreContainerAliases();
+	}
+
+	public function registerSystem()
+	{
 		static::setInstance($this);
 
-		$this->instance('main', $this);
+		$this->instance('brain', $this);
 
 		$this->instance(Container::class, $this);
+
+		foreach ([
+			         \Mimic\Plugin\Hook::class,
+			         \Mimic\Plugin\MimicSlot::class
+		         ] as $item) {
+			$this->instance($item, $item::getInstance());
+		}
+	}
+
+	public function registerCoreContainerAliases()
+	{
+		foreach ([
+			         'brain' => [\Mimic\Brain::class, \Illuminate\Contracts\Container\Container::class, \Mimic\Contract\Brain::class, \Psr\Container\ContainerInterface::class],
+		         ] as $key => $aliases) {
+			foreach ($aliases as $alias) {
+				$this->alias($key, $alias);
+			}
+		}
 	}
 
 	/**

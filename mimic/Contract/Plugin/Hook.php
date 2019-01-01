@@ -21,18 +21,18 @@ interface Hook
 	 *      ],
 	 * ]
 	 * @param string $hook 钩子名
-	 * @param bool $condition 挂载条件
+	 * @param \Closure $condition 挂载条件
 	 * @return void
 	 */
-	public function mount(string $hook, bool $condition = true);
+	public function mount(string $hook, Closure $condition = null);
 
 	/**
 	 * 卸载钩子
 	 * @param string $hook 钩子名
-	 * @param bool $condition 卸载条件
+	 * @param \Closure $condition 卸载条件
 	 * @return void
 	 */
-	public function unmount(string $hook, bool $condition = true);
+	public function unmount(string $hook, Closure $condition = null);
 
 	/**
 	 * 往钩子中注册事件
@@ -56,15 +56,25 @@ interface Hook
 	 * @param string $hook 钩子名
 	 * @return mixed
 	 */
-	public function getHook(string $hook = '');
+	public function getHook(string $hook);
 
 	/**
-	 * 设置钩子事件的执行顺序
-	 * @param string $hook 钩子名
-	 * @param array $sortArray 钩子执行顺序数组
+	 * 将 $hook 中的 $action 放置于 $reference 上方
+	 * @param $hook
+	 * @param $action
+	 * @param $reference
 	 * @return void
 	 */
-	public function setHookActionSort(string $hook, array $sortArray);
+	public function adjustmentUp($hook, $action, $reference);
+
+	/**
+	 * 将 $hook 中的 $action 放置于 $reference 下面
+	 * @param $hook
+	 * @param $action
+	 * @param $reference
+	 * @return void
+	 */
+	public function adjustmentDown($hook, $action, $reference);
 
 	/**
 	 * 获取挂载的钩子的列表
