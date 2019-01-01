@@ -7,7 +7,6 @@ namespace Mimic\Plugin;
 
 use Closure;
 use Mimic\Contract\Plugin\Hook as HookContract;
-use Mimic\Contract\Plugin\Plugin as PluginContract;
 
 class Hook implements HookContract
 {
@@ -64,11 +63,27 @@ class Hook implements HookContract
 			qz_e('没有' . $hook . '钩子');
 		}
 
-		$this->hooks[$hook] = [[
+		$this->hooks[$hook][] = [
 			'action' => $action,
 			'parameters' => $parameters,
 			'callback' => $callback
-		]];
+		];
+	}
+
+	/**
+	 * 触发钩子
+	 * @param string $hook
+	 * @return void
+	 */
+	public function trigger(string $hook)
+	{
+		foreach ($this->hooks[$hook] as $item) {
+			$result = call_user_func_array([mimic($item['action']), 'handle'], $item['parameters']);
+
+			if ($item['callback']) {
+				$item['callback']($result);
+			}
+		}
 	}
 
 	/**
@@ -108,7 +123,7 @@ class Hook implements HookContract
 	 */
 	public function adjustmentUp($hook, $action, $reference)
 	{
-		// todo
+		// todo: adjustmentUp()
 	}
 
 	/**
@@ -120,7 +135,7 @@ class Hook implements HookContract
 	 */
 	public function adjustmentDown($hook, $action, $reference)
 	{
-		// todo
+		// todo: adjustmentDown()
 	}
 
 	/**
@@ -130,6 +145,30 @@ class Hook implements HookContract
 	public function getHookList()
 	{
 		return array_keys($this->hooks);
+	}
+
+	/**
+	 * 获取事件在钩子中的位置
+	 * @param $hook
+	 * @param $action
+	 * @return int|string
+	 */
+	public function lookUpAction($hook, $action)
+	{
+		$index = 0;
+
+		foreach ($this->hooks[$hook] as $key => $item) {
+			if ($item['action'] == $action) {
+				$index = $key + 1;
+				break;
+			}
+		}
+
+		if (!$index) {
+			qz_e($hook . '中没有' . $action . '事件');
+		}
+
+		return $index - 1;
 	}
 
 	/**

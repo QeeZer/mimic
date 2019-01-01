@@ -7,15 +7,19 @@
   "require": {
     "php": ">=7.0",
     "monolog/monolog": "^1.11",
-    "illuminate/database": "v5.5.44"
+    "illuminate/database": "v5.5.44",
+    "symfony/yaml": "v3.4.*"
   },
   "autoload": {
     "files": [
-      "mimic/Support/helpers.php"
+      "mimic/Support/helpers.php",
+      "mimic/Plugin/hooks.php",
+      "hooks.php"
     ],
     "psr-4": {
-      "Console\\": "console",
-      "Mimic\\": "mimic/"
+      "Console\\": "console/",
+      "Mimic\\": "mimic/",
+      "Plugin\\": "plugins/"
     }
   }
 }

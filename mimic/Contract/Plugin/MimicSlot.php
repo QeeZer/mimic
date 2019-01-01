@@ -22,8 +22,21 @@ interface MimicSlot
 	public function unmount($plugin);
 
 	/**
-	 * 激活所有插件
+	 * 获取插件列表
 	 * @return void
 	 */
-	public function run();
+	public function getPluginsList();
+
+	/**
+	 * 获取已激活插件列表
+	 * @return mixed
+	 */
+	public function getActivePluginsList();
+
+	/**
+	 * 获取插件详情
+	 * @param $plugin
+	 * @return mixed
+	 */
+	public function getPluginInfo($plugin);
 }

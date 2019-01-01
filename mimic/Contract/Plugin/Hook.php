@@ -45,6 +45,13 @@ interface Hook
 	public function register(string $hook, $action, $parameters = [], Closure $callback = null);
 
 	/**
+	 * 触发钩子
+	 * @param string $hook
+	 * @return mixed
+	 */
+	public function trigger(string $hook);
+
+	/**
 	 * 校检钩子
 	 * @param string $hook 钩子名
 	 * @return bool

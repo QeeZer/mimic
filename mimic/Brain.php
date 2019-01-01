@@ -8,6 +8,7 @@ namespace Mimic;
 use Closure;
 use Illuminate\Container\Container;
 use Mimic\Contract\Brain as BrainContract;
+use Mimic\Plugin\Hook;
 
 class Brain extends Container implements BrainContract
 {
@@ -17,6 +18,10 @@ class Brain extends Container implements BrainContract
 	/** @var null Mimic 运行目录 */
 	protected $bathPath = null;
 
+	/**
+	 * Brain constructor.
+	 * @param string $bathPath
+	 */
 	public function __construct($bathPath = ROOT_DIR)
 	{
 		$this->bathPath = $bathPath;
@@ -26,14 +31,21 @@ class Brain extends Container implements BrainContract
 		$this->registerCoreContainerAliases();
 	}
 
+	/**
+	 * 注册系统基础项
+	 */
 	public function registerSystem()
 	{
+		/** 单例化 mimic */
 		static::setInstance($this);
 
+		/** 将 mimic 绑定至 Brain::brain */
 		$this->instance('brain', $this);
 
+		/** 绑定自身 */
 		$this->instance(Container::class, $this);
 
+		/** @var 绑定必须单例项 $item */
 		foreach ([
 			         \Mimic\Plugin\Hook::class,
 			         \Mimic\Plugin\MimicSlot::class
@@ -42,6 +54,9 @@ class Brain extends Container implements BrainContract
 		}
 	}
 
+	/**
+	 * 绑定核心容器别名
+	 */
 	public function registerCoreContainerAliases()
 	{
 		foreach ([

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9aa5ffcf0f90923cdd3f424ef29824ee",
+  "content-hash": "8fd7c8578bd1f3f2fbf44d2935191676",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -692,6 +692,70 @@
             "time": "2018-12-05T08:06:11+00:00"
         },
         {
+          "name": "symfony/polyfill-ctype",
+          "version": "v1.10.0",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-ctype.git",
+            "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+            "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+            "shasum": "",
+            "mirrors": [
+              {
+                "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                "preferred": true
+              }
+            ]
+          },
+          "require": {
+            "php": ">=5.3.3"
+          },
+          "suggest": {
+            "ext-ctype": "For best performance"
+          },
+          "type": "library",
+          "extra": {
+            "branch-alias": {
+              "dev-master": "1.9-dev"
+            }
+          },
+          "autoload": {
+            "psr-4": {
+              "Symfony\\Polyfill\\Ctype\\": ""
+            },
+            "files": [
+              "bootstrap.php"
+            ]
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Symfony Community",
+              "homepage": "https://symfony.com/contributors"
+            },
+            {
+              "name": "Gert de Pagter",
+              "email": "BackEndTea@gmail.com"
+            }
+          ],
+          "description": "Symfony polyfill for ctype functions",
+          "homepage": "https://symfony.com",
+          "keywords": [
+            "compatibility",
+            "ctype",
+            "polyfill",
+            "portable"
+          ],
+          "time": "2018-08-06T14:22:27+00:00"
+        },
+      {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.10.0",
             "source": {
@@ -834,6 +898,71 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "time": "2018-12-06T10:45:32+00:00"
+        },
+      {
+        "name": "symfony/yaml",
+        "version": "v3.4.20",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/symfony/yaml.git",
+          "reference": "291e13d808bec481eab83f301f7bff3e699ef603"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/symfony/yaml/zipball/291e13d808bec481eab83f301f7bff3e699ef603",
+          "reference": "291e13d808bec481eab83f301f7bff3e699ef603",
+          "shasum": "",
+          "mirrors": [
+            {
+              "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+              "preferred": true
+            }
+          ]
+        },
+        "require": {
+          "php": "^5.5.9|>=7.0.8",
+          "symfony/polyfill-ctype": "~1.8"
+        },
+        "conflict": {
+          "symfony/console": "<3.4"
+        },
+        "require-dev": {
+          "symfony/console": "~3.4|~4.0"
+        },
+        "suggest": {
+          "symfony/console": "For validating YAML files using the lint command"
+        },
+        "type": "library",
+        "extra": {
+          "branch-alias": {
+            "dev-master": "3.4-dev"
+          }
+        },
+        "autoload": {
+          "psr-4": {
+            "Symfony\\Component\\Yaml\\": ""
+          },
+          "exclude-from-classmap": [
+            "/Tests/"
+          ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Fabien Potencier",
+            "email": "fabien@symfony.com"
+          },
+          {
+            "name": "Symfony Community",
+            "homepage": "https://symfony.com/contributors"
+          }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "https://symfony.com",
+        "time": "2018-11-11T19:48:54+00:00"
         }
     ],
     "packages-dev": [],

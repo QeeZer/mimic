@@ -9,6 +9,7 @@ use Mimic\Contract\Plugin\MimicSlot as MimicSlotContract;
 
 class MimicSlot implements MimicSlotContract
 {
+	/** @var null MimicSlot */
 	protected static $instance = null;
 
 	/**
@@ -32,6 +33,31 @@ class MimicSlot implements MimicSlotContract
 	}
 
 	/**
+	 * 获取插件列表
+	 * @return void
+	 */
+	public function getPluginsList()
+	{
+	}
+
+	/**
+	 * 获取已激活插件列表
+	 * @return mixed
+	 */
+	public function getActivePluginsList()
+	{
+	}
+
+	/**
+	 * 获取插件详情
+	 * @param $plugin
+	 * @return mixed
+	 */
+	public function getPluginInfo($plugin)
+	{
+	}
+
+	/**
 	 * 激活所有插件
 	 * @return void
 	 */
@@ -40,6 +66,11 @@ class MimicSlot implements MimicSlotContract
 		//
 	}
 
+	/**
+	 * 获取自身单例
+	 *
+	 * @return self|null
+	 */
 	public static function getInstance()
 	{
 		if (is_null(static::$instance)) {
@@ -49,6 +80,12 @@ class MimicSlot implements MimicSlotContract
 		return static::$instance;
 	}
 
+	/**
+	 * 设置实例
+	 *
+	 * @param MimicSlotContract|null $slot
+	 * @return MimicSlotContract
+	 */
 	public static function setInstance(MimicSlotContract $slot = null)
 	{
 		return static::$instance = $slot;
