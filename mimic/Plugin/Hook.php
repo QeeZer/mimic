@@ -55,7 +55,7 @@ class Hook implements HookContract
 	 * @param mixed $action 往钩子中注入的操作
 	 * @param array $parameters
 	 * @param Closure|null $callback 回调
-	 * @return void
+	 * @throws \Mimic\Exception\MimicException
 	 */
 	public function register(string $hook, $action, $parameters = [], Closure $callback = null)
 	{
@@ -73,17 +73,25 @@ class Hook implements HookContract
 	/**
 	 * 触发钩子
 	 * @param string $hook
-	 * @return void
+	 * @return mixed
 	 */
 	public function trigger(string $hook)
 	{
+		$return = '';
+
 		foreach ($this->hooks[$hook] as $item) {
 			$result = call_user_func_array([mimic($item['action']), 'handle'], $item['parameters']);
 
 			if ($item['callback']) {
 				$item['callback']($result);
 			}
+
+			if (is_string($result)) {
+				$return .= $result;
+			}
 		}
+
+		return $return;
 	}
 
 	/**
@@ -104,6 +112,7 @@ class Hook implements HookContract
 	 * 获取钩子详情
 	 * @param string $hook 钩子名
 	 * @return mixed
+	 * @throws \Mimic\Exception\MimicException
 	 */
 	public function getHook(string $hook)
 	{
@@ -152,6 +161,7 @@ class Hook implements HookContract
 	 * @param $hook
 	 * @param $action
 	 * @return int|string
+	 * @throws \Mimic\Exception\MimicException
 	 */
 	public function lookUpAction($hook, $action)
 	{

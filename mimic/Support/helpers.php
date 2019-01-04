@@ -4,6 +4,7 @@
  */
 
 use Illuminate\Container\Container;
+use Mimic\Exception\MimicException;
 
 if (!function_exists('mimic')) {
 	/**
@@ -24,10 +25,13 @@ if (!function_exists('mimic')) {
 }
 
 if (!function_exists('qz_e')) {
-	// todo 捕获异常
+	/**
+	 * 抛出异常
+	 * @param $error
+	 * @throws MimicException
+	 */
 	function qz_e($error)
 	{
-		echo $error;
-		exit;
+		throw new MimicException($error);
 	}
 }
