@@ -7,8 +7,9 @@
   "require": {
     "php": ">=7.0",
     "monolog/monolog": "^1.11",
-    "illuminate/database": "v5.5.44",
-    "symfony/yaml": "v3.4.*"
+    "illuminate/database": "v5.5.*",
+    "symfony/yaml": "v3.4.*",
+    "twig/twig": "^2.0"
   },
   "autoload": {
     "files": [

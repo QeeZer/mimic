@@ -4,12 +4,13 @@
  */
 
 use Mimic\Plugin\MimicSlot;
+use Mimic\Exception\MimicException;
 
 define('MIMIC_START', microtime(true));
 
 define('ROOT_DIR', strtr(dirname(dirname(__FILE__)), '\\', '/').'/');
 
-/** 引入 vendor */
+/** require vendor */
 require ROOT_DIR . 'vendor/autoload.php';
 
 try {
@@ -20,6 +21,9 @@ try {
 	/** MimicSlot::run() */
 	$mimic->make(MimicSlot::class)->run();
 
-} catch (\Mimic\Exception\MimicException $e) {
+	/*$a = $mimic->make(MimicSlot::class)->getPluginInfo('Test');
+	var_dump($a);*/
+
+} catch (MimicException $e) {
 	$e->handle();
 }
